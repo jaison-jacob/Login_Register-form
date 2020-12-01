@@ -1,0 +1,179 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "STUDENT DETAIL WITH SWAGGER API",
+      "version": "1.0.0",
+      "description":
+        "This is the student api with swagger"
+   },
+   "host": "localhost:8080",
+   "basepath": "",
+   "tags": [
+       {
+           "name" : "student",
+           "description": "student detail"
+       }
+   ],
+   "schemes": [
+       "http",
+       "https",
+       "server",
+       ""
+   ],
+   "consumes": [
+    "application/json"
+],
+"produces": [
+    "application/json"
+],
+"paths": {
+    "/student": {
+        "get": {
+            "tags":[
+                "students"
+            ],
+            "summary": "get all details",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/detail"
+                    }
+                }
+            }
+        },
+        "post": {
+            "tags": [
+                "insert student data"
+            ],
+            "summary":"insert data",
+            "parameters": [
+                {
+                    "in":"body",
+                    "name":"body",
+                    "description":"create new data",
+                    "schema": {
+                        "$ref":"#/definitions/detail"
+                    }
+                }
+            ],
+            "produces":[
+                "application/json"
+            ],
+            "responses":{
+                "200":{
+                    "description":"OK",
+                    "schema":{
+                        "$ref":"#/definitions/detail"
+                    }
+                },
+                "400":{
+                    "description":"bad post data"
+                }
+            }
+        }
+    },
+    "/student/{id}": {
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "student id",
+                "type": "string"
+            }
+        ],
+        "get": {
+            "tags": [
+                "student data get by id"
+            ],
+            "summary": "get data by id",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref":"#/definitions/detail"
+                    }
+                },
+                "400": {
+                    "description": "data not found"
+                }
+            }
+        },
+        "put": {
+            "summary": "update data by id",
+            "tags": [
+                "update data"
+            ],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref":"#/definitions/detail"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref":"#/definitions/detail"
+                    }
+                },
+                "400": {
+                    "description":"data not updated"
+                }
+            }
+        },
+        "delete": {
+            "summary": "delete data by id",
+            "tags": [
+                "delete data"
+            ],
+            "responses": {
+                "200": {
+                    "description": "delete data successfully",
+                    "schema": {
+                        "$ref":"#/definitions/detail"
+                    }
+                },
+                "400": {
+                    "description":"data not found"
+                }
+            }
+        }
+    }
+},
+
+    
+
+   "definitions": {
+    "type":"object",   
+    "detail": {
+           "properties": {
+            "name" :{
+                "type": "String"
+            },
+            "age" :{
+                "type": "String"
+            },
+            "gender" :{
+                "type": "String"
+            },
+            "email" :{
+                "type": "String"
+            },
+            "phoneno" :{
+                "type": "String"
+            },
+            "addres" :{
+                "type": "String"
+            }
+               
+           }
+           
+       }
+   }
+ }
